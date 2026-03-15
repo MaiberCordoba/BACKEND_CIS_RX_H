@@ -16,8 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
+from apps.cierre_cajas.api.routers.arqueoRouter import arqueoRouter
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
+    #modulos 
     path('api/', include('apps.users.api.routers')),
+    path('api/', include(arqueoRouter.urls)),
 ]
