@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path , include
 from apps.cierre_cajas.api.routers.arqueoRouter import arqueoRouter
+from apps.precios_estudios.api.estudioRouter import estudioRouter
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +25,5 @@ urlpatterns = [
     #modulos 
     path('api/', include('apps.users.api.routers')),
     path('api/', include(arqueoRouter.urls)),
+    path('api/', include(estudioRouter.urls)),
 ]
