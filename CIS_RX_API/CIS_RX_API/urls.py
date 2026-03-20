@@ -18,6 +18,10 @@ from django.contrib import admin
 from django.urls import path , include
 from apps.cierre_cajas.api.routers.arqueoRouter import arqueoRouter
 from apps.precios_estudios.api.estudioRouter import estudioRouter
+from apps.inventario.api.routers.productosRouter import inventarioRouter
+from apps.inventario.api.routers.movimientosRouter import movimientosRouter
+from apps.inventario.api.routers.unidadesRouter import unidadesRouter 
+from apps.inventario.api.routers.reportesRouter import reportesRouter
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +30,8 @@ urlpatterns = [
     path('api/', include('apps.users.api.routers')),
     path('api/', include(arqueoRouter.urls)),
     path('api/', include(estudioRouter.urls)),
+    path('api/', include(inventarioRouter.urls)),
+    path('api/', include(movimientosRouter.urls)),
+    path('api/', include(unidadesRouter.urls)),
+    path('api/', include(reportesRouter.urls)),
 ]
