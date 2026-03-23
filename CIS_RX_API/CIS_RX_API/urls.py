@@ -16,6 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 from apps.cierre_cajas.api.routers.arqueoRouter import arqueoRouter
 from apps.precios_estudios.api.estudioRouter import estudioRouter
 from apps.inventario.api.routers.productosRouter import inventarioRouter
@@ -25,6 +29,10 @@ from apps.inventario.api.routers.reportesRouter import reportesRouter
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
+    #login
+    path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     
     #modulos 
     path('api/', include('apps.users.api.routers')),
