@@ -8,3 +8,5 @@ class EstudioModelViewSet(viewsets.ModelViewSet):
     
     filter_backends = [filters.SearchFilter]
     search_fields = ['nombre', 'codigo']
+    
+    

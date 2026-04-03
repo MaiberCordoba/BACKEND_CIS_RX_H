@@ -27,6 +27,8 @@ from apps.inventario.api.routers.movimientosRouter import movimientosRouter
 from apps.inventario.api.routers.unidadesRouter import unidadesRouter 
 from apps.inventario.api.routers.reportesRouter import reportesRouter
 
+from apps.precios_estudios.api.cargaMasivaView import CargaMasivaEstudiosView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     
@@ -42,4 +44,9 @@ urlpatterns = [
     path('api/', include(movimientosRouter.urls)),
     path('api/', include(unidadesRouter.urls)),
     path('api/', include(reportesRouter.urls)),
+    
+    
+    #carga masiva estudios
+    
+     path('api/estudios/carga-masiva/', CargaMasivaEstudiosView.as_view(), name='carga_masiva_estudios'),
 ]
