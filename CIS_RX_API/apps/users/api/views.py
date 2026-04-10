@@ -19,3 +19,16 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     def me(self, request):
         serializer = self.get_serializer(request.user)
         return Response(serializer.data)
+    
+    def partial_update(self, request, *args, **kwargs):
+        user = self.get_object()
+        data = request.data.copy()  # Copia mutable
+        if 'password' in data:
+            user.set_password(data['password'])
+            user.save()
+            del data['password']  # Eliminar para que no se envíe al serializador
+        # Crear serializador con los datos modificados
+        serializer = self.get_serializer(user, data=data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        return Response(serializer.data)
