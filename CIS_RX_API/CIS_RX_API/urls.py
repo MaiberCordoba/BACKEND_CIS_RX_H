@@ -27,7 +27,7 @@ from apps.inventario.api.routers.movimientosRouter import movimientosRouter
 from apps.inventario.api.routers.unidadesRouter import unidadesRouter 
 from apps.inventario.api.routers.reportesRouter import reportesRouter
 
-from apps.precios_estudios.api.cargaMasivaView import CargaMasivaEstudiosView
+from apps.precios_estudios.api.cargaMasivaView import CargaMasivaEstudiosJSONView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -48,5 +48,5 @@ urlpatterns = [
     
     #carga masiva estudios
     
-     path('api/estudios/carga-masiva/', CargaMasivaEstudiosView.as_view(), name='carga_masiva_estudios'),
+     path('api/estudios/carga-masiva-json/', CargaMasivaEstudiosJSONView.as_view(), name='carga_masiva_json'),
 ]
